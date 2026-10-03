@@ -1,0 +1,6 @@
+# Fragment only. Edit existing options in /etc/tinyproxy/tinyproxy.conf.
+# Retain distribution-provided user, group, logging and service settings.
+Port 8888
+Listen 127.0.0.1
+Allow 127.0.0.1
+ConnectPort 443

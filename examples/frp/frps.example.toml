@@ -1,0 +1,5 @@
+# New installation example. Do not replace an existing frps configuration.
+bindPort = 7000
+auth.method = "token"
+auth.token = "CHANGE_ME_TO_THE_SAME_RANDOM_TOKEN_ON_BOTH_SIDES"
+allowPorts = [{ start = 10998, end = 10999 }]

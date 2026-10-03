@@ -1,0 +1,25 @@
+# Run in the same Compose project/network as the existing DST service.
+# This file defines the proxy only; it does NOT install a DST server.
+services:
+  dst-lobby-proxy:
+    build:
+      context: ./proxy
+    restart: unless-stopped
+    environment:
+      VPS_HOST: "${VPS_HOST:?Set VPS_HOST in .env}"
+      VPS_USER: "${VPS_USER:?Set VPS_USER in .env}"
+      VPS_SSH_PORT: "${VPS_SSH_PORT:-22}"
+    volumes:
+      - type: bind
+        source: ./secrets/vps_ssh_key
+        target: /run/secrets/vps_ssh_key
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./secrets/known_hosts
+        target: /etc/ssh/dst_known_hosts
+        read_only: true
+        bind:
+          create_host_path: false
+    # Deliberately no ports: stanza; accessible on the Compose network only.

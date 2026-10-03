@@ -1,0 +1,19 @@
+# New installation example. Merge proxy blocks into an existing deployment.
+serverAddr = "203.0.113.10" # Documentation-only IP: replace it.
+serverPort = 7000
+auth.method = "token"
+auth.token = "CHANGE_ME_TO_THE_SAME_RANDOM_TOKEN_ON_BOTH_SIDES"
+
+[[proxies]]
+name = "dst-master"
+type = "udp"
+localIP = "127.0.0.1"
+localPort = 10999
+remotePort = 10999
+
+[[proxies]]
+name = "dst-caves"
+type = "udp"
+localIP = "127.0.0.1"
+localPort = 10998
+remotePort = 10998
